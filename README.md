@@ -16,29 +16,22 @@ Installing
 
 ### From source ###
 
-Create a [catkin workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) and navigate to its source directory (ex. `~/catkin_ws/src`).
+Goto your workspace directory for rosbuild.
 
 Make sure you have git installed:
 
     sudo apt-get install git-core
 
-Download the stack from our repository:
+Download the package from our repository:
 
-    git clone https://github.com/ccny-ros-pkg/scan_tools.git
+    git clone https://github.com/usiraj/laser_scan_matcher.git
 
-Install any dependencies using [rosdep](http://wiki.ros.org/rosdep).
 
-    rosdep install scan_tools
+Compile the package from its folder:
 
-Compile your catkin workspace from its root folder (eg. `~/catkin_ws`):
+    rosmake
 
-    catkin_make
-
-Finally, source the information from your catkin workspace (or add it to your `~/.bashrc`)
-
-    source devel/setup.bash
-
-More info
+More info for orignal package
 -----------------------------------
 
 http://wiki.ros.org/scan_tools
