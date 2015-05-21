@@ -20,7 +20,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 include( ${CMAKE_CURRENT_SOURCE_DIR}/csm/GetCSM.cmake )
 download_and_compile_csm()
 
-pkg_check_modules(PCL REQUIRED QUIET)
+find_package(PCL REQUIRED QUIET)
 include_directories(${csm_INCLUDE_DIRS} ${PCL_INCLUDE_DIRS})
 
 #uncomment if you have defined messages
@@ -45,3 +45,4 @@ target_link_libraries(laser_scan_matcher_nodelet laser_scan_matcher)
 #Create node
 rosbuild_add_executable(laser_scan_matcher_node src/laser_scan_matcher_node.cpp)
 target_link_libraries( laser_scan_matcher_node laser_scan_matcher )
+install_csm()

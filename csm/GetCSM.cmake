@@ -7,7 +7,8 @@ endfunction( _set_csm_dirs)
 
 function( download_and_compile_csm )
     _set_csm_dirs()
-
+    #Creating appropriate directories
+	#file(MAKE_DIRECTORY ${CSM_BINARY_DIR}/install)
     include(ExternalProject)
     ExternalProject_Add(csm_src
         #--CMake variables ---------------------------------------------------------
@@ -15,6 +16,7 @@ function( download_and_compile_csm )
         TMP_DIR ${CSM_BINARY_DIR}/tmp
         STAMP_DIR ${CSM_BINARY_DIR}/stamp
         SOURCE_DIR ${CSM_BINARY_DIR}/src
+        INSTALL_DIR ${CSM_BINARY_DIR}/install
         #--Download step -----------------------------------------------------------
         GIT_REPOSITORY https://github.com/AndreaCensi/csm.git
         GIT_TAG 23703a998fff57250322
@@ -24,6 +26,8 @@ function( download_and_compile_csm )
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CSM_BINARY_DIR}/install
         #-- Build step -------------------------------------------------------------
         BUILD_IN_SOURCE 1
+        #-- Install step -----------------------------------------------------------
+        INSTALL_COMMAND make install
     )
 
     # Create phony target csm and add dependency on csm_source
@@ -34,7 +38,7 @@ function( download_and_compile_csm )
     # Pass variables to parent scope to interface with the new library
     set(csm_LIBRARIES csm PARENT_SCOPE)
     set(csm_INCLUDE_DIRS ${CSM_BINARY_DIR}/install/include PARENT_SCOPE)
-    set(csm_EXPORTED_TARGETS csm PARENT_SCOPE)
+    set(csm_EXPORTED_TARGETS csm PARENT_SCOPE)    
 
 endfunction(download_and_compile_csm)
 
@@ -43,9 +47,9 @@ function(install_csm)
     _set_csm_dirs()
 
     install(FILES "${CSM_BINARY_DIR}/install/lib/libcsm.so"
-        DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
+        DESTINATION ${LIBRARY_OUTPUT_PATH})
 
     install(DIRECTORY ${CSM_BINARY_DIR}/install/include/
-        DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION} )
+        DESTINATION ${PROJECT_SOURCE_DIR}/include/csm/ )
 
 endfunction(install_csm)

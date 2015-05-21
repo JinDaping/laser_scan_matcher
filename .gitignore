@@ -3,6 +3,7 @@ build/
 bin/
 lib/
 docs/
+include/csm/
 msg_gen/
 srv_gen/
 *.*~
