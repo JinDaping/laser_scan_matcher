@@ -4,22 +4,12 @@ Laser scan tools for ROS
 Overview
 -----------------------------------
 
-Laser scan processing tools. The meta-package contains:
+Note : Forked from ccny-ros-pkg/scan_tools ( Modified for rosbuild indigo {not completed yet} )
 
- * `laser_ortho_projector`: calculates orthogonal projections of LaserScan messages
+Laser scan processing tools. The meta-package contains:
  
  * `laser_scan_matcher`: an incremental laser scan matcher, using Andrea Censi's Canonical 
 Scan Matcher implementation. It downloads and installs Andrea Censi's Canonical Scan Matcher [1] locally.
-
- * `laser_scan_sparsifier`: takes in a LaserScan message and sparsifies it
-
- * `laser_scan_splitter`:  takes in a LaserScan message and splits 
-it into a number of other LaserScan messages 
-
- * `ncd_parser`: reads in .alog data files from the New College Dataset [2]
-and broadcasts scan and odometry messages to ROS.
-
- * `scan_to_cloud_converter`: converts LaserScan to PointCloud messages.
 
 Installing
 -----------------------------------
@@ -58,7 +48,3 @@ References
  [1] A. Censi, "An ICP variant using a point-to-line metric" Proceedings of the 
 IEEE International Conference on Robotics and Automation (ICRA), 2008
 
- [2] M. Smith, I. Baldwin, W. Churchill, R. Paul, and P. Newman, 
-The new college vision and laser data set, International Journal for Robotics 
-Research (IJRR), vol. 28, no. 5, pp. 595599, May 2009.
- 
