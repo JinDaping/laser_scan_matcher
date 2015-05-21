@@ -29,7 +29,7 @@ Download the package from our repository:
 
 Compile the package from its folder:
 
-    rosmake
+    make
 
 More info for orignal package
 -----------------------------------
